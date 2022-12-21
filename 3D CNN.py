@@ -265,6 +265,6 @@ for i in range(height):
 ## Show Ground Truths
 ground_truth = spectral.imshow(classes = GT,figsize =(7,7))
 predict_image = spectral.imshow(classes = outputs.astype(int),figsize =(7,7))
-spectral.save_rgb("predictions.png", outputs.astype(int), colors=spectral.spy_colors)
-spectral.save_rgb("ground_truth.png", GT, colors=spectral.spy_colors)
+spectral.save_rgb("predicted_gt.png", outputs.astype(int), colors=spectral.spy_colors)
+spectral.save_rgb("or_gt.png", GT, colors=spectral.spy_colors)
 
