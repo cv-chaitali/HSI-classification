@@ -30,8 +30,8 @@ from sklearn.decomposition import IncrementalPCA, PCA
 
 
 def SplitTr_Te(HSI, GT, TeRatio, randomState=345):
-    Tr, Te, TrC, TeC = train_test_split(HSI, GT, test_size=TeRatio, random_state=randomState, stratify=GT)
-    return Tr, Te, TrC, TeC
+    Xtrain,Xtest,ytrain,ytest = train_test_split(HSI, GT, test_size=TeRatio, random_state=randomState, stratify=GT)
+    return Xtrain,Xtest,ytrain,ytest
 
 ## Dimensional Reduction Method
 def DL_Method(HSI, numComponents = 75):
@@ -140,12 +140,12 @@ HSI.shape, GT.shape
 
 
 
-Tr, Te, TrC, TeC = SplitTr_Te(HSI, GT, 0.40)
-Tr.shape, Te.shape, TrC.shape, TeC.shape
+Xtrain,Xtest,ytrain,ytest = SplitTr_Te(HSI, GT, 0.40)
 
 
 
-Tr, Tv, TrC, TvC = SplitTr_Te(Tr, TrC, 0.30)
+
+Tr, Tv, TrC, TvC = SplitTr_Te(Xtrain, ytrain, 0.30)
 Tr.shape, Tv.shape, TrC.shape, TvC.shape
 
 from keras.utils import np_utils
@@ -154,7 +154,6 @@ Tr = Tr.reshape(-1, 11, 11, 20, 1)
 TrC = np_utils.to_categorical(TrC)
 Tv = Tv.reshape(-1, 11, 11, 20, 1) 
 TvC = np_utils.to_categorical(TvC)
-Tr.shape, TrC.shape, Tv.shape, TvC.shape
 
 from keras.losses import categorical_crossentropy
 from keras.optimizers import Adadelta
