@@ -196,7 +196,7 @@ model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accurac
 
 
 start = time.time()
-history = model.fit(x=Tr, y=TrC, batch_size=256, epochs=1, validation_data=(Tv, TvC))
+history = model.fit(x=Tr, y=TrC, batch_size=256, epochs=100, validation_data=(Tv, TvC))
 end = time.time()
 Tr_Time = end - start
 
@@ -294,6 +294,6 @@ for i in range(height):
 ## Show Ground Truths
 ground_truth = spectral.imshow(classes = GT,figsize =(7,7))
 predict_image = spectral.imshow(classes = outputs.astype(int),figsize =(7,7))
-spectral.save_rgb("predictions.png", outputs.astype(int), colors=spectral.spy_colors)
-spectral.save_rgb("ground_truth.png", GT, colors=spectral.spy_colors)
+spectral.save_rgb("predicted_gt.png", outputs.astype(int), colors=spectral.spy_colors)
+spectral.save_rgb("orig_gt.png", GT, colors=spectral.spy_colors)
 
