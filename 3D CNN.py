@@ -201,31 +201,7 @@ end = time.time()
 Tr_Time = end - start
 
 
-## Plot Training and Validation loss and Accuracy 
-plt.figure(figsize=(7,7))
-plt.rcParams.update({'font.size': 18})
-plt.grid()
-plt.plot(history.history['loss'])
-plt.plot(history.history['val_loss'])
-plt.ylabel('Loss')
-plt.xlabel('Epochs')
-plt.title('Training and Validation loss')
-plt.legend(['Training','Validation'], loc='upper right')
-# plt.savefig("IP_loss.eps")
-# plt.show()
-# ## Plot Training and Validation Accuracy
-# plt.figure(figsize=(7,7))
-# plt.ylim(0,1.1)
-# plt.grid()
-# plt.plot(history.history['accuracy'])
-# plt.plot(history.history['val_accuracy'])
-# plt.ylabel('Accuracy')
-# plt.xlabel('Epochs')
-# plt.title('Training and Validation Accuracy')
-# plt.legend(['Training','Validation'])
-# plt.savefig("IP_Accuracy.eps")
-# plt.show()
-## Testing Phase
+
 
 model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accuracy'])
 
