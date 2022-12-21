@@ -200,8 +200,8 @@ Tr_Time = end - start
 
 model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accuracy'])
 
-Te = Te.reshape(-1, 11, 11, 20, 1)
-TeC = np_utils.to_categorical(TeC)
+Te = Xtest.reshape(-1, 11, 11, 20, 1)
+TeC = np_utils.to_categorical(ytest)
 Te.shape, TeC.shape
 
 classification,confusion,Test_loss,Test_accuracy,oa,each_acc,aa,kappa,target_names,y_pred,Time = reports(Te,TeC)
