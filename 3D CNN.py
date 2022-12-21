@@ -5,36 +5,28 @@ import gc
 gc.collect()
 import warnings
 warnings.filterwarnings('ignore')
-import time
-import numpy
-import numpy as np
-from PIL import Image
-from operator import truediv
-import scipy.io as sio
 import os
 import pandas as pd
 import seaborn as sns
 import spectral
+import time
+import numpy
+
+
 
 from plotly.offline import init_notebook_mode
 import plotly.graph_objs as go
 from matplotlib.pyplot import cm
 import matplotlib.pyplot as plt
-
+from plotly.offline import iplot, init_notebook_mode
 import sklearn as sk
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, accuracy_score, classification_report, cohen_kappa_score
-from sklearn.decomposition import IncrementalPCA, PCA
-import keras
-import h5py
-from keras.layers import Dropout, Input, Conv2D, Conv3D, MaxPool3D, Flatten, Dense, Reshape, BatchNormalization
-from plotly.offline import iplot, init_notebook_mode
-from keras.losses import categorical_crossentropy
-from keras.optimizers import Adadelta
-from keras.models import Sequential, Model
-from keras.utils import np_utils
-from keras.optimizers import Adam
-from keras.callbacks import ModelCheckpoint
+import numpy as np
+from PIL import Image
+from operator import truediv
+import scipy.io as sio
+
+
 
 
 def SplitTr_Te(HSI, GT, TeRatio, randomState=345):
@@ -72,6 +64,8 @@ def ZeroPad(HSI, margin=2):
     NHSI[x_offset:HSI.shape[0] + x_offset, y_offset:HSI.shape[1] + y_offset, :] = HSI
     return NHSI
 
+from sklearn.metrics import confusion_matrix, accuracy_score, classification_report, cohen_kappa_score
+from sklearn.decomposition import IncrementalPCA, PCA
 
 
 def HSICubes(HSI, GT, WinSize=5, removeZeroLabels = True):
@@ -164,6 +158,16 @@ Tv = Tv.reshape(-1, 11, 11, 20, 1)
 TvC = np_utils.to_categorical(TvC)
 Tr.shape, TrC.shape, Tv.shape, TvC.shape
 
+from keras.layers import Dropout, Input, Conv2D, Conv3D, MaxPool3D, Flatten, Dense, Reshape, BatchNormalization
+
+from keras.losses import categorical_crossentropy
+from keras.optimizers import Adadelta
+from keras.models import Sequential, Model
+from keras.utils import np_utils
+from keras.optimizers import Adam
+from keras.callbacks import ModelCheckpoint
+import keras
+import h5py
 
 
 input_layer = Input((11, 11, 20, 1))
